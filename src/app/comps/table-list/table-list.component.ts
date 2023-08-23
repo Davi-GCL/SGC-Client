@@ -6,15 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./table-list.component.css']
 })
 export class TableListComponent {
-  tables: string[] = [
-    'tabela1',
-    'tabela2',
-    'tabela3',
-    'tabela4',
-    'tabela5',
-    'tabela6',
-    'tabela7',
-    'tabela8',
+  tables:Array<{name:string,checked:boolean}> = [
+    {name:'tabela1', checked:false},
+    {name:'tabela2', checked:false},
+    {name:'tabela3', checked:false},
+    {name:'tabela4', checked:false},
+    {name:'tabela5', checked:false},
+    {name:'tabela6', checked:false},
   ]
 
   texto: string = "";
@@ -27,23 +25,29 @@ export class TableListComponent {
     console.log(this.texto);
   }
   allSelected:boolean = false;
+  checked:any = null;
 
   selectAll(){
     //Pega todos as linhas da lista Tabelas 
-    // const items = document.querySelectorAll(".tables-item");
+    const items = document.querySelectorAll(".tables-item");
     const checkboxes = document.querySelectorAll(".form-check-input")
 
-    // checkboxes.forEach((box)=>{
+    if(this.allSelected == false){
+      checkboxes.forEach((box)=>{
+        box.setAttribute('checked','true')
+      })
+    }else{
+      checkboxes.forEach((box)=>{
+        box.removeAttribute('checked')
+      })
+    }
 
-    // })
-    // items.forEach((item)=>{
-    //   let checkbox = item.querySelector(".form-check-input");
-    //   if(checkbox){
-    //     checkbox.nodeValue = 'on';
-    //   }
-    // })
+    this.checked = "checked";
+    console.log(this.checked);
+  }
 
-    this.allSelected = !this.allSelected;
-
+  saveSelect(event:any){
+    //Atribui ao atributo checked do respectivo objeto da tabela, localizado pelo id, o estado do checkbox(true ou false) 
+    this.tables[event.target.parentNode.id].checked = event.target.checked;
   }
 }

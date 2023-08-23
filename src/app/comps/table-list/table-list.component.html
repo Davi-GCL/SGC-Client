@@ -13,8 +13,8 @@
 
     <li class="list-group-item tables-item" id={{tables.indexOf(table)}}
     *ngFor="let table of tables|filter:texto" >
-        <input class="form-check-input me-2" type="checkbox" id={{table}} >
-        <label class="form-check-label stretched-link" for="{{table}}">{{table}}</label>
+        <input class="form-check-input me-2" type="checkbox" role="checkbox" id={{table.name}} (change)="saveSelect($event)">
+        <label class="form-check-label stretched-link" for="{{table.name}}">{{table.name}}</label>
     </li>
     
 </ul>
