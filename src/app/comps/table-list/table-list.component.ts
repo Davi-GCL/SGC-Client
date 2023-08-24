@@ -24,6 +24,7 @@ export class TableListComponent {
     console.log(this.texto);
   }
   allSelected:boolean = false;
+  checked:any = null;
 
   selectAll(){
     //Pega todos as linhas da lista Tabelas 
