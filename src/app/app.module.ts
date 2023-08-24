@@ -5,12 +5,14 @@ import { FormsModule, NgModel } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { TableListComponent } from './comps/table-list/table-list.component';
 import { FilterPipe } from './filter.pipe';
+import { InputConnectionComponent } from './comps/input-connection/input-connection.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableListComponent,
-    FilterPipe
+    FilterPipe,
+    InputConnectionComponent
   ],
   imports: [
     BrowserModule,

@@ -6,15 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./table-list.component.css']
 })
 export class TableListComponent {
-  tables: string[] = [
-    'tabela1',
-    'tabela2',
-    'tabela3',
-    'tabela4',
-    'tabela5',
-    'tabela6',
-    'tabela7',
-    'tabela8',
+  tables: Array<{name:string,isChecked:boolean}> = [
+      {name:'tabela1',isChecked:false},
+      {name:'tabela2',isChecked:false},
+      {name:'tabela3',isChecked:false},
+      {name:'tabela4',isChecked:false},
+      {name:'tabela5',isChecked:false},
   ]
 
   texto: string = "";
@@ -30,20 +27,29 @@ export class TableListComponent {
 
   selectAll(){
     //Pega todos as linhas da lista Tabelas 
-    // const items = document.querySelectorAll(".tables-item");
-    const checkboxes = document.querySelectorAll(".form-check-input")
+    let tablesItems = document.querySelectorAll(".tables-item")
 
-    // checkboxes.forEach((box)=>{
+    tablesItems.forEach((item)=>{
+      let checkbox = item.getElementsByTagName('input')[0];
+      checkbox.checked = this.allSelected? false : true;
 
-    // })
-    // items.forEach((item)=>{
-    //   let checkbox = item.querySelector(".form-check-input");
-    //   if(checkbox){
-    //     checkbox.nodeValue = 'on';
-    //   }
+      let index = this.tables.findIndex(t=>t.name==checkbox.id)
+      this.tables[index].isChecked = this.allSelected? false : true;
+
+    })
+
+    // this.tables.forEach((table)=>{
+    //   table.isChecked= !table.isChecked
     // })
 
     this.allSelected = !this.allSelected;
+
+  }
+
+  changeCheckBox(event:any){
+    let index = this.tables.findIndex((x)=>x.name===event.target.id)
+    this.tables[index].isChecked= event.target.checked;
+    console.log(this.tables)
 
   }
 }

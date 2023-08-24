@@ -1,0 +1,20 @@
+.list-body{
+    max-height: 176px;
+    overflow-y: auto;
+    margin-bottom: 0px;
+    padding: 0px;
+    border-bottom-left-radius: 0.375rem;
+}
+.list-body>li{
+    border-inline: none;
+    /* border-bottom: none; */
+}
+
+.input-search{
+    font-size: 16px;
+}
+
+.input-search:focus{
+    outline: 0;
+    box-shadow: none !important;
+}

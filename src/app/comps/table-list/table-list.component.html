@@ -1,24 +1,32 @@
 <!-- <input type="text" name="search" (blur)="logger($event)"> -->
-<input [(ngModel)]="texto" type="text" name="search">
-<ul class="list-group">
-    <!-- List header -->
-    <div class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center" id="tables-list-head">
-        <div>
-            <input class="form-check-input me-2" type="checkbox" value="12" id="select-all" [(ngModel)]="allSelected" (click)="selectAll()" >
-            <label class="form-check-label" for="select-all">Tabelas</label>
+<form action="">
+    <div class="list-group border border-1 rounded-bottom-2">
+        <!-- List header -->
+        <div class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center border-0" id="tables-list-head">
+            <div>
+                <input class="form-check-input me-2" type="checkbox" value="select-all" id="select-all" [(ngModel)]="allSelected" (click)="selectAll()" >
+                <label class="form-check-label" for="select-all">Tabelas</label>
+            </div>
+            <span class="badge bg-primary rounded-pill">{{(tables|filter:texto).length}}</span>
         </div>
-        <span class="badge bg-primary rounded-pill">{{tables.length}}</span>
-    </div>
-    <!-- /List header -->
-
-    <li class="list-group-item tables-item" id={{tables.indexOf(table)}}
-    *ngFor="let table of tables|filter:texto" >
-        <input class="form-check-input me-2" type="checkbox" id={{table}} >
-        <label class="form-check-label stretched-link" for="{{table}}">{{table}}</label>
-    </li>
+        
+        <div class="d-flex search-group border px-2 pe-2">
+            <input type="text" class="form-control form-control-sm border-0 input-search" name="search" placeholder="Pesquisar tabelas"
+            [(ngModel)]="texto" style="border-radius: 0px;">
     
-</ul>
-
+            <label for="search"><svg style="vertical-align: bottom;" width="17" height="17" class="DocSearch-Search-Icon" viewBox="0 0 20 20"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg></label>
+          </div>
+        <!-- /List header -->
+    
+        <ul class="p-0 list-body">
+            <li class="list-group-item tables-item" id={{tables.indexOf(table)}}
+        *ngFor="let table of tables|filter:texto" >
+            <input class="form-check-input me-2" [checked]="table.isChecked" type="checkbox" id={{table.name}} (change)="changeCheckBox($event)">
+            <label class="form-check-label stretched-link" for="{{table.name}}">{{table.name}}</label>
+            </li>
+        </ul>
+    </div>    
+</form>
 
 <!-- 
     style:
