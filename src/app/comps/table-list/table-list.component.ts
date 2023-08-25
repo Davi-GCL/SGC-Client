@@ -25,29 +25,38 @@ export class TableListComponent {
     console.log(this.texto);
   }
   allSelected:boolean = false;
-  checked:any = null;
 
+  //Metodo para marcar todas checkbox presentes na lista
   selectAll(){
     //Pega todos as linhas da lista Tabelas 
     const items = document.querySelectorAll(".tables-item");
     const checkboxes = document.querySelectorAll(".form-check-input")
 
     if(this.allSelected == false){
-      checkboxes.forEach((box)=>{
-        box.setAttribute('checked','true')
+      items.forEach((item)=>{
+        // box.setAttribute('checked','true')
+        let box = item.getElementsByTagName('input')
+        console.log(box)
+        box[0].checked = true;
+        this.tables[parseInt(item.id)].checked = true;
       })
     }else{
-      checkboxes.forEach((box)=>{
-        box.removeAttribute('checked')
+      items.forEach((item)=>{
+        // box.removeAttribute('checked')
+        let box = item.getElementsByTagName('input')
+        console.log(box)
+        box[0].checked = false;
+        this.tables[parseInt(item.id)].checked = false;
       })
     }
 
-    this.checked = "checked";
-    console.log(this.checked);
   }
 
   saveSelect(event:any){
     //Atribui ao atributo checked do respectivo objeto da tabela, localizado pelo id, o estado do checkbox(true ou false) 
     this.tables[event.target.parentNode.id].checked = event.target.checked;
+  }
+  getCheckBoxState(){
+    
   }
 }

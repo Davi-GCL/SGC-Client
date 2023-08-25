@@ -15,7 +15,7 @@ export class FilterPipe implements PipeTransform {
       let resultData: Array<string> = [];
 
       for(let aux of value){
-        if(aux.name.includes(filterStatus)){
+        if(aux.name.toLowerCase().includes(filterStatus.toLowerCase())){
           resultData.push(aux);
         }
       }

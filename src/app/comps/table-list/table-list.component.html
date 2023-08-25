@@ -1,24 +1,33 @@
 <!-- <input type="text" name="search" (blur)="logger($event)"> -->
-<input [(ngModel)]="texto" type="text" name="search">
-<ul class="list-group">
+
+<form action="">
+    <ul class="list-group">
     <!-- List header -->
     <div class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center" id="tables-list-head">
         <div>
-            <input class="form-check-input me-2" type="checkbox" value="12" id="select-all" [(ngModel)]="allSelected" (click)="selectAll()" >
-            <label class="form-check-label" for="select-all">Tabelas</label>
+            <input class="form-check-input me-2" type="checkbox" value="12" id="select-all" name="selectAllCheck" [(ngModel)]="allSelected" (click)="selectAll()" >
+            <label class="form-check-label" for="select-all">Todos</label>
         </div>
         <span class="badge bg-primary rounded-pill">{{tables.length}}</span>
     </div>
+    <input type="text" name="search" class="form-control form-control-sm" placeholder="Pesquisar tabelas 🔍 " style="border-radius: 0px;padding: 0.25rem 1rem;font-size: 1rem;border-top: none;" [(ngModel)]="texto">
     <!-- /List header -->
 
     <li class="list-group-item tables-item" id={{tables.indexOf(table)}}
-    *ngFor="let table of tables|filter:texto" >
-        <input class="form-check-input me-2" type="checkbox" role="checkbox" id={{table.name}} (change)="saveSelect($event)">
-        <label class="form-check-label stretched-link" for="{{table.name}}">{{table.name}}</label>
-    </li>
-    
+    *ngFor="let table of tables|filter:texto">
+        <input class="form-check-input me-2" type="checkbox" id="check-{{table.name}}" (change)="saveSelect($event)" 
+        *ngIf="table.checked==false;else inputChecked">
+        <ng-template #inputChecked>
+            <input class="form-check-input me-2" type="checkbox" id="check-{{table.name}}" checked (change)="saveSelect($event)">
+        </ng-template>
+        <label class="form-check-label stretched-link" for="check-{{table.name}}">{{table.name}}</label>
+    </li>    
 </ul>
 
+<div class="btn-area d-flex justify-content-end mt-2 w-100">
+    <button type="submit" class="btn btn-primary">Gerar Classes</button>
+</div>
+</form>
 
 <!-- 
     style:
