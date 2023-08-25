@@ -6,13 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./table-list.component.css']
 })
 export class TableListComponent {
-  tables:Array<{name:string,checked:boolean}> = [
-    {name:'tabela1', checked:false},
-    {name:'tabela2', checked:false},
-    {name:'tabela3', checked:false},
-    {name:'tabela4', checked:false},
-    {name:'tabela5', checked:false},
-    {name:'tabela6', checked:false},
+  tables: Array<{name:string,isChecked:boolean}> = [
+      {name:'tabela1',isChecked:false},
+      {name:'tabela2',isChecked:false},
+      {name:'tabela3',isChecked:false},
+      {name:'tabela4',isChecked:false},
+      {name:'tabela5',isChecked:false},
   ]
 
   texto: string = "";
@@ -29,34 +28,29 @@ export class TableListComponent {
   //Metodo para marcar todas checkbox presentes na lista
   selectAll(){
     //Pega todos as linhas da lista Tabelas 
-    const items = document.querySelectorAll(".tables-item");
-    const checkboxes = document.querySelectorAll(".form-check-input")
+    let tablesItems = document.querySelectorAll(".tables-item")
 
-    if(this.allSelected == false){
-      items.forEach((item)=>{
-        // box.setAttribute('checked','true')
-        let box = item.getElementsByTagName('input')
-        console.log(box)
-        box[0].checked = true;
-        this.tables[parseInt(item.id)].checked = true;
-      })
-    }else{
-      items.forEach((item)=>{
-        // box.removeAttribute('checked')
-        let box = item.getElementsByTagName('input')
-        console.log(box)
-        box[0].checked = false;
-        this.tables[parseInt(item.id)].checked = false;
-      })
-    }
+    tablesItems.forEach((item)=>{
+      let checkbox = item.getElementsByTagName('input')[0];
+      checkbox.checked = this.allSelected? false : true;
+
+      let index = this.tables.findIndex(t=>t.name==checkbox.id)
+      this.tables[index].isChecked = this.allSelected? false : true;
+
+    })
+
+    // this.tables.forEach((table)=>{
+    //   table.isChecked= !table.isChecked
+    // })
+
+    this.allSelected = !this.allSelected;
 
   }
 
-  saveSelect(event:any){
-    //Atribui ao atributo checked do respectivo objeto da tabela, localizado pelo id, o estado do checkbox(true ou false) 
-    this.tables[event.target.parentNode.id].checked = event.target.checked;
-  }
-  getCheckBoxState(){
-    
+  changeCheckBox(event:any){
+    let index = this.tables.findIndex((x)=>x.name===event.target.id)
+    this.tables[index].isChecked= event.target.checked;
+    console.log(this.tables)
+
   }
 }
