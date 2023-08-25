@@ -12,6 +12,7 @@ export class TableListComponent {
       {name:'tabela3',isChecked:false},
       {name:'tabela4',isChecked:false},
       {name:'tabela5',isChecked:false},
+      {name:'teste',isChecked:false},
   ]
 
   texto: string = "";
