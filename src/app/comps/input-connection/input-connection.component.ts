@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./input-connection.component.css']
 })
 export class InputConnectionComponent {
-
+  
 }
