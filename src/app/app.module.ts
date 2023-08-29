@@ -7,6 +7,7 @@ import { TableListComponent } from './comps/table-list/table-list.component';
 import { FilterPipe } from './filter.pipe';
 import { InputConnectionComponent } from './comps/input-connection/input-connection.component';
 import { RadioSgbdComponent } from './comps/radio-sgbd/radio-sgbd.component';
+import { ClassesListComponent } from './comps/classes-list/classes-list.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { RadioSgbdComponent } from './comps/radio-sgbd/radio-sgbd.component';
     TableListComponent,
     FilterPipe,
     InputConnectionComponent,
-    RadioSgbdComponent
+    RadioSgbdComponent,
+    ClassesListComponent
   ],
   imports: [
     BrowserModule,

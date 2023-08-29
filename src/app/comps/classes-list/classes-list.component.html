@@ -1,0 +1,22 @@
+<form action="" style="max-width: 565px;">
+    <div class="list-group border border-1 rounded-bottom-2">
+        <!-- List header -->
+        <div class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center border-0" id="tables-list-head">
+            <div>
+                <label class="form-check-label" for="select-all">Downloads</label>
+            </div>
+            <span class="badge bg-primary rounded-pill">{{(tables).length}}</span>
+        </div>
+        <!-- /List header -->
+    
+        <ul class="p-0 list-body">
+            <li class="list-group-item tables-item" id={{tables.indexOf(table)}}
+        *ngFor="let table of tables" >
+            <a href="" class="link-offset-1 download-link">{{table.name|titlecase}}.cs</a>
+            </li>
+        </ul>
+    </div>
+    <div class="btn-area d-flex justify-content-end mt-2 w-100">
+        <button type="submit" class="btn btn-primary">Baixar todos</button>
+    </div>    
+</form>
