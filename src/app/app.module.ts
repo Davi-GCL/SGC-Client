@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule, NgModel , ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TableListComponent } from './comps/table-list/table-list.component';
@@ -8,6 +8,9 @@ import { FilterPipe } from './filter.pipe';
 import { InputConnectionComponent } from './comps/input-connection/input-connection.component';
 import { RadioSgbdComponent } from './comps/radio-sgbd/radio-sgbd.component';
 import { ClassesListComponent } from './comps/classes-list/classes-list.component';
+import { ComponentsPageComponent } from './routes/components-page/components-page.component';
+import { AppRoutingModule } from './app-routing.module';
+import { MainPageComponent } from './routes/main-page/main-page.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +19,15 @@ import { ClassesListComponent } from './comps/classes-list/classes-list.componen
     FilterPipe,
     InputConnectionComponent,
     RadioSgbdComponent,
-    ClassesListComponent
+    ClassesListComponent,
+    ComponentsPageComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

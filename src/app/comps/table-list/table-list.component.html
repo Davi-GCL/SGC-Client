@@ -1,10 +1,10 @@
 <!-- <input type="text" name="search" (blur)="logger($event)"> -->
-<form action="" style="max-width: 565px;">
+<form action="" class="mb-3 mx-auto" style="max-width: 565px;">
     <div class="list-group border border-1 rounded-bottom-2">
         <!-- List header -->
         <div class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center border-0" id="tables-list-head">
             <div>
-                <input class="form-check-input me-2" type="checkbox" value="select-all" id="select-all" [(ngModel)]="allSelected" (click)="selectAll()" >
+                <input class="form-check-input me-2" type="checkbox" value="select-all" id="select-all" name="selectall" [(ngModel)]="allSelected" (click)="selectAll()" >
                 <label class="form-check-label" for="select-all">Tabelas</label>
             </div>
             <span class="badge bg-primary rounded-pill">{{(tables|filter:texto).length}}</span>
