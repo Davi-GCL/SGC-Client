@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+
 @Component({
   selector: 'app-table-list',
   templateUrl: './table-list.component.html',
@@ -30,6 +30,8 @@ export class TableListComponent {
   selectAll(){
     //Pega todos as linhas da lista Tabelas 
     let tablesItems = document.querySelectorAll(".tables-item")
+    this.allSelected = !this.allSelected
+    let coringa = document.getElementById('check-select-all')
 
     tablesItems.forEach((item)=>{
       let checkbox = item.getElementsByTagName('input')[0];

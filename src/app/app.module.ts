@@ -11,6 +11,7 @@ import { ClassesListComponent } from './comps/classes-list/classes-list.componen
 import { ComponentsPageComponent } from './routes/components-page/components-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MainPageComponent } from './routes/main-page/main-page.component';
+import { FormConnectionComponent } from './comps/form-connection/form-connection.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MainPageComponent } from './routes/main-page/main-page.component';
     RadioSgbdComponent,
     ClassesListComponent,
     ComponentsPageComponent,
-    MainPageComponent
+    MainPageComponent,
+    FormConnectionComponent
   ],
   imports: [
     BrowserModule,

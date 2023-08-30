@@ -1,0 +1,25 @@
+.form-connection{
+    max-width: 626px;
+}
+
+#input-connection{
+    height: 7.125rem;
+    resize:none;
+    transition: all 0.3s linear;
+    color: #7f8283;
+}
+
+#input-connection:focus{
+    color: #000000;
+}
+
+
+@media screen and (min-width: 470px){
+    #input-connection:focus{
+        letter-spacing: 0.7px;
+        /* font-weight: 500; */
+        /* word-spacing: 5px; */
+        color: #000000;
+        font-size: 16px;
+    }
+}
