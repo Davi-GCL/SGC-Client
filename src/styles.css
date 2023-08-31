@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+.list-header{
+    background-color: #7749F8 !important;
+    color: #FFFF
+}
+
+.list-header>.badge{
+    background-color: #FFFF;
+    color: #7749F8;
+    text-align: center;
+}
+
+.disabled-div{
+    opacity: 60%;
+}

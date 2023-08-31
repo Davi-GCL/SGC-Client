@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent {
-
+  databaseName:any = "a"
 
 }

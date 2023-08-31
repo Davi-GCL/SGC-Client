@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import {FormGroup, FormControl} from '@angular/forms'
 
 @Component({
   selector: 'app-table-list',
@@ -6,6 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./table-list.component.css']
 })
 export class TableListComponent {
+  texto: string = "";
+  all: boolean = false;
+  @Input() databaseName:string = 'banco de dados';
+
   tables: Array<{name:string,isChecked:boolean}> = [
       {name:'tabela1',isChecked:false},
       {name:'tabela2',isChecked:false},
@@ -15,7 +20,7 @@ export class TableListComponent {
       {name:'teste',isChecked:false},
   ]
 
-  texto: string = "";
+  
 
   logger(event:any){
     console.log(event.target.value)
@@ -24,36 +29,40 @@ export class TableListComponent {
   teste() {
     console.log(this.texto);
   }
-  allSelected:boolean = false;
-
+  
   //Metodo para marcar todas checkbox presentes na lista
-  selectAll(){
+  selectAll(event:any , search:any){
     //Pega todos as linhas da lista Tabelas 
     let tablesItems = document.querySelectorAll(".tables-item")
-    this.allSelected = !this.allSelected
+    console.log(this.all)
     let coringa = document.getElementById('check-select-all')
 
-    tablesItems.forEach((item)=>{
-      let checkbox = item.getElementsByTagName('input')[0];
-      checkbox.checked = this.allSelected? false : true;
-
-      let index = this.tables.findIndex(t=>t.name==checkbox.id)
-      this.tables[index].isChecked = this.allSelected? false : true;
-
+    this.tables.forEach((table)=>{
+      //Marca apenas os itens que fazem parte da pesquisa
+      if(table.name.includes(search)){
+        table.isChecked = !this.all; 
+      }   
     })
+
+    // tablesItems.forEach((item)=>{
+    //   let checkbox = item.getElementsByTagName('input')[0];
+    //   checkbox.checked = !this.all;
+
+    //   let index = this.tables.findIndex(t=>t.name==checkbox.id)
+    //   this.tables[index].isChecked = !this.all;
+
+    // })
 
     // this.tables.forEach((table)=>{
     //   table.isChecked= !table.isChecked
     // })
-
-    this.allSelected = !this.allSelected;
 
   }
 
   changeCheckBox(event:any){
     let index = this.tables.findIndex((x)=>x.name===event.target.id)
     this.tables[index].isChecked= event.target.checked;
-    console.log(this.tables)
+    // console.log(this.tables)
 
   }
 }

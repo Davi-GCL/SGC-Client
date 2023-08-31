@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormGroup , FormControl } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,8 @@ import { FormGroup , FormControl } from '@angular/forms';
   styleUrls: ['./classes-list.component.css']
 })
 export class ClassesListComponent {
+  // @Input() databaseName = 'banco de dados';
+
   tables: Array<{name:string,isChecked:boolean}> = [
     {name:'tabela1',isChecked:false},
     {name:'tabela2',isChecked:false},

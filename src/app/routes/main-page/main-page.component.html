@@ -1,7 +1,13 @@
-<div class="container p-4">
+<div class="main-container container bg-white rounded p-4 py-5 my-4">
     <h2 class="mb-4 text-center">Conecte à um Banco de Dados </h2>
     <app-form-connection></app-form-connection>
     <hr class="my-5">
-    <app-table-list></app-table-list>
-    <app-classes-list></app-classes-list>
+    <div class="disabled-div" *ngIf="databaseName=='';else loaded">
+        <app-table-list databaseName="banco de dados"></app-table-list>
+        <app-classes-list></app-classes-list>
+    </div>
+    <ng-template #loaded >
+        <app-table-list databaseName={{databaseName}}></app-table-list>
+        <app-classes-list></app-classes-list>
+    </ng-template>
 </div>

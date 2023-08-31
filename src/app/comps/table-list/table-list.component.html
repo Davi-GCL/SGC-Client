@@ -1,13 +1,14 @@
 <!-- <input type="text" name="search" (blur)="logger($event)"> -->
-<form action="" style="max-width: 565px;">
+<form action="" class="mx-auto mb-3" style="max-width: 565px;">
+    <h5 class="pb-1">Tabelas em "{{databaseName}}": </h5>
     <div class="list-group border border-1 rounded-bottom-2">
         <!-- List header -->
-        <div class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center border-0" id="tables-list-head">
+        <div class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center border-0 list-header" id="tables-list-head">
             <div>
-                <input class="form-check-input me-2" type="checkbox" name="allSelected" id="check-select-all" (click)="selectAll()" >
-                <label class="form-check-label" for="check-select-all">Tabelas</label>
+                <input class="form-check-input me-2" type="checkbox" id="list-header-check" name="all" (click)="selectAll($event, texto)" [(ngModel)]="all">
+                <label class="form-check-label" for="list-header-check">Tabelas</label>
             </div>
-            <span class="badge bg-primary rounded-pill">{{(tables|filter:texto).length}}</span>
+            <span class="badge rounded-pill">{{(tables|filter:texto).length}}</span>
         </div>
         
         <div class="d-flex search-group border px-2 pe-2">

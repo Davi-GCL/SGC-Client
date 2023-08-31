@@ -4,8 +4,8 @@
 
 #input-connection{
     height: 7.125rem;
-    resize:none;
-    transition: all 0.3s linear;
+    resize: vertical;
+    transition: color, font-size, letter-spacing 0.3s ease;
     color: #7f8283;
 }
 
