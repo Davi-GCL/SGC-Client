@@ -6,6 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent {
-  databaseName:any = "a"
+  databaseName:any = "A"
+  classesList: any = ""
 
+  ScrollTo(destination:string){
+    let end = document.getElementById(destination);
+    if(end){
+      // Scroll to the destination using
+      // scrollIntoView method
+
+      end.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  }
 }

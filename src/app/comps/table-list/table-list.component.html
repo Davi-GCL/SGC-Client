@@ -1,5 +1,5 @@
 <!-- <input type="text" name="search" (blur)="logger($event)"> -->
-<form action="" class="mx-auto mb-3" style="max-width: 565px;">
+<form action="" class="mx-auto mb-5" style="max-width: 565px;" (input)="formChange($event)">
     <h5 class="pb-1">Tabelas em "{{databaseName}}": </h5>
     <div class="list-group border border-1 rounded-bottom-2">
         <!-- List header -->
@@ -27,8 +27,11 @@
             </li>
         </ul>
     </div>
-    <div class="btn-area d-flex justify-content-end mt-2 w-100">
-        <button type="submit" class="btn btn-primary">Gerar Classes</button>
+    
+    <div class="btn-area d-flex justify-content-between mt-3 w-100">
+        <input type="text" class="form-control w-75" placeholder="Insira o namespace do projeto" required>
+        <button type="submit" class="btn btn-primary" (click)="handleSubmit()">Gerar Classes</button>
+        <small *ngIf="!preenchido">Selecione algo</small>
     </div>    
 </form>
 

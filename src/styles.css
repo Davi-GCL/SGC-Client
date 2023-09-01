@@ -13,3 +13,10 @@
 .disabled-div{
     opacity: 60%;
 }
+
+.btn-scroll-down{
+    position: absolute; 
+    left: 50%;
+    color: #7749f8;
+    cursor: pointer;
+}

@@ -34,8 +34,7 @@ export class TableListComponent {
   selectAll(event:any , search:any){
     //Pega todos as linhas da lista Tabelas 
     let tablesItems = document.querySelectorAll(".tables-item")
-    console.log(this.all)
-    let coringa = document.getElementById('check-select-all')
+    // console.log(this.all)
 
     this.tables.forEach((table)=>{
       //Marca apenas os itens que fazem parte da pesquisa
@@ -65,4 +64,19 @@ export class TableListComponent {
     // console.log(this.tables)
 
   }
+  preenchido: boolean = false;
+
+  handleSubmit(){
+    let index = this.tables.findIndex((x)=>x.isChecked === true);
+    if(index == -1){
+      this.preenchido = false
+      return
+    }
+    
+  }
+
+  formChange(event:any){
+    console.log(event.target)
+  }
+
 }

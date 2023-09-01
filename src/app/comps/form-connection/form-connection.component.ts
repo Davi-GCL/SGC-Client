@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup , FormControl } from '@angular/forms';
+import { GetTablesService } from 'src/app/services/get-tables.service';
 
 @Component({
   selector: 'app-form-connection',
@@ -16,4 +17,6 @@ export class FormConnectionComponent {
     
     console.log(this.connectionForm.value)
   }
+
+  constructor(private getTables: GetTablesService){}
 }

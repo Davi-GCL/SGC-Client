@@ -7,7 +7,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilterPipe implements PipeTransform {
 
   transform(value: any, filterStatus: string) {
-    console.log(value)
 
     if(value=="" || filterStatus==""){
       return value
