@@ -10,6 +10,8 @@ export class TableListComponent {
   texto: string = "";
   all: boolean = false;
   @Input() databaseName:string = 'banco de dados';
+  inputNamespace:FormControl = new FormControl('');
+
 
   tables: Array<{name:string,isChecked:boolean}> = [
       {name:'tabela1',isChecked:false},
@@ -20,20 +22,15 @@ export class TableListComponent {
       {name:'teste',isChecked:false},
   ]
 
-  
 
   logger(event:any){
     console.log(event.target.value)
   }
 
-  teste() {
-    console.log(this.texto);
-  }
-  
   //Metodo para marcar todas checkbox presentes na lista
-  selectAll(event:any , search:any){
+  selectAll(search:any){
     //Pega todos as linhas da lista Tabelas 
-    let tablesItems = document.querySelectorAll(".tables-item")
+    // let tablesItems = document.querySelectorAll(".tables-item")
     // console.log(this.all)
 
     this.tables.forEach((table)=>{
@@ -67,16 +64,21 @@ export class TableListComponent {
   preenchido: boolean = false;
 
   handleSubmit(){
+
+    //Validador do formulario
+    //Verifica se na lista de checkboxes tem alguma marcada
     let index = this.tables.findIndex((x)=>x.isChecked === true);
-    if(index == -1){
-      this.preenchido = false
-      return
-    }
+    let inputValue = this.inputNamespace.value;
     
+    if(index == -1 || inputValue == ''){
+      this.preenchido = false;
+      return ;
+    }
+    this.preenchido = true;
   }
 
   formChange(event:any){
-    console.log(event.target)
+    // console.log(event.target)
   }
 
 }

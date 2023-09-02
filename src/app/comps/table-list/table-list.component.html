@@ -5,7 +5,7 @@
         <!-- List header -->
         <div class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center border-0 list-header" id="tables-list-head">
             <div>
-                <input class="form-check-input me-2" type="checkbox" id="list-header-check" name="all" (click)="selectAll($event, texto)" [(ngModel)]="all">
+                <input class="form-check-input me-2" type="checkbox" id="list-header-check" name="all" (click)="selectAll(texto)" [(ngModel)]="all">
                 <label class="form-check-label" for="list-header-check">Tabelas</label>
             </div>
             <span class="badge rounded-pill">{{(tables|filter:texto).length}}</span>
@@ -29,10 +29,10 @@
     </div>
     
     <div class="btn-area d-flex justify-content-between mt-3 w-100">
-        <input type="text" class="form-control w-75" placeholder="Insira o namespace do projeto" required>
+        <input type="text" class="form-control w-75" name="inputNamespace" placeholder="Insira o namespace do projeto" [formControl]="inputNamespace" required>
         <button type="submit" class="btn btn-primary" (click)="handleSubmit()">Gerar Classes</button>
-        <small *ngIf="!preenchido">Selecione algo</small>
-    </div>    
+    </div>
+    <small class="text-danger" *ngIf="!preenchido">Preencha todos formulários!</small>    
 </form>
 
 <!-- 

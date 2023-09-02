@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class MainPageComponent {
   databaseName:any = "A"
-  classesList: any = ""
+  classesList: any = "A"
 
   ScrollTo(destination:string){
     let end = document.getElementById(destination);
