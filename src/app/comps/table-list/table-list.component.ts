@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms'
+import { FormTables } from 'src/app/Models/FormTables';
+import { ICheckTable } from 'src/app/Models/ICheckTable';
 
 @Component({
   selector: 'app-table-list',
@@ -13,7 +15,7 @@ export class TableListComponent {
   inputNamespace:FormControl = new FormControl('');
 
 
-  tables: Array<{name:string,isChecked:boolean}> = [
+  tables: Array<ICheckTable> = [
       {name:'tabela1',isChecked:false},
       {name:'tabela2',isChecked:false},
       {name:'tabela3',isChecked:false},
@@ -75,6 +77,9 @@ export class TableListComponent {
       return ;
     }
     this.preenchido = true;
+
+    let formTables: FormTables = new FormTables(this.tables, this.databaseName, inputValue);
+    //Programar o algoritmo para enviar uma lista com as tabelas marcadas
   }
 
   formChange(event:any){

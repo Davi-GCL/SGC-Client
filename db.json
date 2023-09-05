@@ -1,0 +1,17 @@
+{
+    "posts": [
+      { "id": 1, "title": "json-server", "author": "typicode" }
+    ],
+
+    "formConnection": {"sgbdRadio":1, "connString":"connection-string"},
+
+    "tables": {"tableList":[ "tabela1" , "tabela2" , "tabela3" , "tabela4" ],            
+               "databaseName":"databaseName"},
+
+    "selectedTables": {"tableList":[ "tabela1" , "tabela2" ], "nameSpace":"name-space"},
+    
+    "generatedClasses": [
+      {"name":"tabela1","download":"tabela1.com"},
+      {"name":"tabela2","download":"tabela2.com"}
+    ]
+}

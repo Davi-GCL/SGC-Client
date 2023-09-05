@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup , FormControl } from '@angular/forms';
+import { GeneratedClass } from 'src/app/Models/GeneratedClass';
 
 @Component({
   selector: 'app-classes-list',
@@ -9,13 +10,13 @@ import { FormGroup , FormControl } from '@angular/forms';
 export class ClassesListComponent {
   // @Input() databaseName = 'banco de dados';
 
-  tables: Array<{name:string,isChecked:boolean}> = [
-    {name:'tabela1',isChecked:false},
-    {name:'tabela2',isChecked:false},
-    {name:'tabela3',isChecked:false},
-    {name:'tabela4',isChecked:false},
-    {name:'tabela5',isChecked:false},
-    {name:'teste',isChecked:false},
+  tables: Array<GeneratedClass> = [
+    {name:'tabela1',download:'#'},
+    {name:'tabela2',download:'#'},
+    {name:'tabela3',download:'#'},
+    {name:'tabela4',download:'#'},
+    {name:'tabela5',download:'#'},
+    {name:'teste',download:'#'},
 ]
 
   

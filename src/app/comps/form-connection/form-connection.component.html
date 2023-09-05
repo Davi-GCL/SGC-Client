@@ -25,7 +25,10 @@
         <textarea class="form-control fw-normal mb-2" name="connString" id="input-connection" placeholder="Cole aqui a string de conexão do banco de dados" minlength="10" spellcheck="false" required
         formControlName="connString"></textarea>
         <div class="btn-area d-flex justify-content-end mt-2 w-100">
-        <button type="submit" class="btn btn-primary">Conectar</button>
-        </div> 
+            <span class="d-grid" style="justify-items: end;">
+                <button type="submit" class="btn btn-primary" (click)="handleSubmit()">Conectar</button>
+                <small class="text-danger">{{warn}}</small> 
+            </span>
+        </div>
     </div>
 </form>
