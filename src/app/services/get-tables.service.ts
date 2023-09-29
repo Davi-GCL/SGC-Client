@@ -5,5 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class GetTablesService {
 
+  sgbd:any
+  connString:any
+
   constructor() { }
 }

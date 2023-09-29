@@ -15,14 +15,20 @@ export class FormConnectionComponent {
   })
   warn: string = " ";
 
+  constructor(private getTables: GetTablesService){}
+
   handleSubmit(){
     if(! this.connectionForm.value.connString){
       this.warn = "Preencha todos formulários!"
       return
     }
+    //Armazenando os valores no "contexto" para ser usado depois
+    this.getTables.sgbd = parseInt(this.connectionForm.value.sgbdRadio as string);
+    this.getTables.connString = this.connectionForm.value.connString;
+    
     let formConnection: FormConnection = new FormConnection(...[this.connectionForm.value])
     //Fazer aqui o algoritmo para enviar o objeto com os valores do formulario de conexao para a API
   }
 
-  constructor(private getTables: GetTablesService){}
+  
 }

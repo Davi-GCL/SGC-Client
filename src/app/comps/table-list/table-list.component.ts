@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms'
 import { FormTables } from 'src/app/Models/FormTables';
 import { ICheckTable } from 'src/app/Models/ICheckTable';
+import { GetTablesService } from 'src/app/services/get-tables.service';
 
 @Component({
   selector: 'app-table-list',
@@ -24,6 +25,7 @@ export class TableListComponent {
       {name:'teste',isChecked:false},
   ]
 
+  constructor(private getTables : GetTablesService){}
 
   logger(event:any){
     console.log(event.target.value)
@@ -77,8 +79,8 @@ export class TableListComponent {
       return ;
     }
     this.preenchido = true;
-
-    let formTables: FormTables = new FormTables(this.tables, this.databaseName, inputValue);
+    const {sgbd , connString} = this.getTables;
+    let formTables: FormTables = new FormTables(this.tables, sgbd, connString ,inputValue);
     //Programar o algoritmo para enviar uma lista com as tabelas marcadas
   }
 
