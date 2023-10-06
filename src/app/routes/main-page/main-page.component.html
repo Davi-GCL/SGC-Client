@@ -1,15 +1,15 @@
 <div class="main-container container bg-white rounded p-4 py-5 my-4">
     <h2 class="mb-4 text-center">Conecte à um Banco de Dados </h2>
-    <app-form-connection></app-form-connection>
-    <div class="mx-auto btn-scroll-down" id="btn-scroll-down" (click)="ScrollTo('tables-section')" *ngIf="databaseName"><i class="bi bi-chevron-down fs-3"></i></div>
+    <app-form-connection (APIEvent)="EventRes($event)"></app-form-connection>
+    <div class="mx-auto btn-scroll-down" id="btn-scroll-down" (click)="ScrollTo('tables-section')" *ngIf="tables"><i class="bi bi-chevron-down fs-3"></i></div>
     <hr class="my-5">
     <section id="tables-section">
-        <div class="disabled-div" *ngIf="databaseName=='';else loaded">
+        <div class="disabled-div" *ngIf="!tables;else loaded">
             <h6 class="text-center">Nada Carregado</h6>
         </div>
         <ng-template #loaded>
-            <app-table-list databaseName={{databaseName}}></app-table-list>
-            <div *ngIf="classesList"><app-classes-list></app-classes-list></div>
+            <app-table-list [inputTable]="tables"></app-table-list>
+            <div><app-classes-list></app-classes-list></div>
         </ng-template>
     </section>
 </div>

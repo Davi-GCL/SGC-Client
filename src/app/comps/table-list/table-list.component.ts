@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms'
 import { FormTables } from 'src/app/Models/FormTables';
 import { ICheckTable } from 'src/app/Models/ICheckTable';
+import { Table } from 'src/app/Models/Table';
 import { GetTablesService } from 'src/app/services/get-tables.service';
 
 @Component({
@@ -9,21 +10,27 @@ import { GetTablesService } from 'src/app/services/get-tables.service';
   templateUrl: './table-list.component.html',
   styleUrls: ['./table-list.component.css']
 })
-export class TableListComponent {
+export class TableListComponent implements OnInit{
   texto: string = "";
   all: boolean = false;
-  @Input() databaseName:string = 'banco de dados';
+  databaseName = "";
   inputNamespace:FormControl = new FormControl('');
 
+  @Input({alias:'inputTable'}) inputTables!: Array<Table>;
 
-  tables: Array<ICheckTable> = [
-      {name:'tabela1',isChecked:false},
-      {name:'tabela2',isChecked:false},
-      {name:'tabela3',isChecked:false},
-      {name:'tabela4',isChecked:false},
-      {name:'tabela5',isChecked:false},
-      {name:'teste',isChecked:false},
-  ]
+  tables: Array<ICheckTable> = []
+
+  ngOnInit(){
+    if(this.inputTables){
+      let result = new Array<ICheckTable>();
+      this.inputTables.forEach((table:any) => {
+        result.push({ name: table.name ,isChecked:false });
+      });
+      this.tables = result;
+      this.databaseName = this.inputTables[0].catalog;
+    }
+    
+  }
 
   constructor(private getTables : GetTablesService){}
 

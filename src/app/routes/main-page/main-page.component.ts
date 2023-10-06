@@ -1,13 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Table } from 'src/app/Models/Table';
+import { GetTablesService } from 'src/app/services/get-tables.service';
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.css']
 })
-export class MainPageComponent {
-  databaseName:any = "A"
-  classesList: any = "A"
+export class MainPageComponent implements OnInit{
+  tables!: Table[];
+  constructor(private getTables: GetTablesService){}
+
+  ngOnInit(): void {  }
+
+  EventRes(x:any){
+    this.tables = x;
+  }
 
   ScrollTo(destination:string){
     let end = document.getElementById(destination);
