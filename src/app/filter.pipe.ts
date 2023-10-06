@@ -12,7 +12,7 @@ export class FilterPipe implements PipeTransform {
       return value
     }else{
       let resultData: Array<string> = [];
-
+      console.log(filterStatus)
       for(let aux of value){
         if(aux.name.toLowerCase().includes(filterStatus.toLowerCase())){
           resultData.push(aux);
