@@ -13,7 +13,8 @@
         <ul class="p-0 list-body">
             <li class="list-group-item tables-item" id={{tables.indexOf(table)}}
         *ngFor="let table of tables" >
-            <a href="" class="link-offset-1 download-link">{{table.name|titlecase}}.cs</a>
+            <a href={{table.download}} download="{{table.name}}" class="link-offset-1 download-link">{{table.name|titlecase}}</a>
+            <!-- a href={{linkURI}} download="Teste.txt" class="link-offset-1 download-link">{{table.name|titlecase}}.cs</a> -->
             </li>
         </ul>
     </div>
