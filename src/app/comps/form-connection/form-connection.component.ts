@@ -28,6 +28,8 @@ export class FormConnectionComponent {
     
     let formConnection: FormConnection = new FormConnection(...[this.connectionForm.value])
     //Fazer aqui o algoritmo para enviar o objeto com os valores do formulario de conexao para a API
+    this.getTables.fetchAll(formConnection).subscribe({complete:console.log,
+    error:console.error})
   }
 
   

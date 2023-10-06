@@ -31,7 +31,8 @@ import { FormConnectionComponent } from './comps/form-connection/form-connection
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -82,6 +82,7 @@ export class TableListComponent {
     const {sgbd , connString} = this.getTables;
     let formTables: FormTables = new FormTables(this.tables, sgbd, connString ,inputValue);
     //Programar o algoritmo para enviar uma lista com as tabelas marcadas
+    
   }
 
   formChange(event:any){
