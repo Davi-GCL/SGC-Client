@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms'
 import { FormTables } from 'src/app/Models/FormTables';
+import { GeneratedClass } from 'src/app/Models/GeneratedClass';
 import { ICheckTable } from 'src/app/Models/ICheckTable';
 import { Table } from 'src/app/Models/Table';
+import { GeneratedFilesMapperService } from 'src/app/services/generated-files.mapper.service';
 import { GetTablesService } from 'src/app/services/get-tables.service';
 import { PostFormTablesService } from 'src/app/services/post-form-tables.service';
 
@@ -15,6 +17,7 @@ export class TableListComponent implements OnInit{
   texto: string = "";
   all: boolean = false;
   databaseName = "";
+  resList = new Array<GeneratedClass>();
   inputNamespace:FormControl = new FormControl('');
 
   @Input({alias:'inputTable'}) inputTables!: Array<Table>;
@@ -33,7 +36,7 @@ export class TableListComponent implements OnInit{
     
   }
 
-  constructor(private getTables : GetTablesService, private postForm : PostFormTablesService){}
+  constructor(private getTables : GetTablesService, private postForm : PostFormTablesService, private filesMapper : GeneratedFilesMapperService){}
 
   logger(event:any){
     console.log(event.target.value)
@@ -91,7 +94,10 @@ export class TableListComponent implements OnInit{
     const {sgbd , connString} = this.getTables;
     let formTables: FormTables = new FormTables(this.tables, sgbd, connString ,inputValue);
     //Programar o algoritmo para enviar uma lista com as tabelas marcadas
-    this.postForm.postSelection(formTables)
+    this.postForm.postSelection(formTables).subscribe((success)=>{
+      this.filesMapper.map(success);
+    },
+    error=>console.error(error));
     
   }
 

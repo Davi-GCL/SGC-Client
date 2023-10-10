@@ -10,7 +10,7 @@ import { GeneratedClass } from '../Models/GeneratedClass';
 })
 export class PostFormTablesService {
 
-  apiUrl = "https://localhost:7029/Connection/BuildClass"; 
+  apiUrl = "https://localhost:7029/Connection/Class"; 
   sgbd:any;
   connString:any;
   _classes: any;
@@ -25,6 +25,7 @@ export class PostFormTablesService {
   constructor(private http: HttpClient) { }
 
   postSelection(form:FormTables): Observable<any> {
+    console.log(form)
     let aux = this.http.post(this.apiUrl, form, {headers: {'Content-Type': 'application/json'},}).pipe(take(1));
     this._classes = new Observable((subscriber)=>{
       subscriber.next(aux.subscribe(x=>x))
