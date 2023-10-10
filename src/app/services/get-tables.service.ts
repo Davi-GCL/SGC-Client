@@ -8,7 +8,7 @@ import { Table } from '../Models/Table';
   providedIn: 'root'
 })
 export class GetTablesService {
-  apiUrl = "https://localhost:7029/connect"; 
+  apiUrl = "https://localhost:7029/Connection/Connect"; 
   sgbd:any;
   connString:any;
   _tables: any;

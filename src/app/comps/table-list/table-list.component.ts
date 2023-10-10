@@ -4,6 +4,7 @@ import { FormTables } from 'src/app/Models/FormTables';
 import { ICheckTable } from 'src/app/Models/ICheckTable';
 import { Table } from 'src/app/Models/Table';
 import { GetTablesService } from 'src/app/services/get-tables.service';
+import { PostFormTablesService } from 'src/app/services/post-form-tables.service';
 
 @Component({
   selector: 'app-table-list',
@@ -32,7 +33,7 @@ export class TableListComponent implements OnInit{
     
   }
 
-  constructor(private getTables : GetTablesService){}
+  constructor(private getTables : GetTablesService, private postForm : PostFormTablesService){}
 
   logger(event:any){
     console.log(event.target.value)
@@ -86,9 +87,11 @@ export class TableListComponent implements OnInit{
       return ;
     }
     this.preenchido = true;
+    //Pega a string de conexão armazenada no service
     const {sgbd , connString} = this.getTables;
     let formTables: FormTables = new FormTables(this.tables, sgbd, connString ,inputValue);
     //Programar o algoritmo para enviar uma lista com as tabelas marcadas
+    this.postForm.postSelection(formTables)
     
   }
 
