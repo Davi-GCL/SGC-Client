@@ -15,4 +15,8 @@ export class GeneratedFilesMapperService {
     }
     return this.filesList;
   }
+
+  clearFilesList(){
+    this.filesList = new Array<GeneratedClass>();
+  }
 }

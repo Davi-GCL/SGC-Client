@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms'
 import { FormTables } from 'src/app/Models/FormTables';
 import { GeneratedClass } from 'src/app/Models/GeneratedClass';
@@ -13,7 +13,7 @@ import { PostFormTablesService } from 'src/app/services/post-form-tables.service
   templateUrl: './table-list.component.html',
   styleUrls: ['./table-list.component.css']
 })
-export class TableListComponent implements OnInit{
+export class TableListComponent implements OnInit, OnChanges{
   texto: string = "";
   all: boolean = false;
   databaseName = "";
@@ -25,18 +25,31 @@ export class TableListComponent implements OnInit{
   tables: Array<ICheckTable> = []
 
   ngOnInit(){
-    if(this.inputTables){
-      let result = new Array<ICheckTable>();
-      this.inputTables.forEach((table:any) => {
-        result.push({ name: table.name ,isChecked:false });
-      });
-      this.tables = result;
-      this.databaseName = this.inputTables[0].catalog;
-    }
+    // if(this.inputTables){
+    //   let result = new Array<ICheckTable>();
+    //   this.inputTables.forEach((table:any) => {
+    //     result.push({ name: table.name ,isChecked:false });
+    //   });
+    //   this.tables = result;
+    //   this.databaseName = this.inputTables[0].catalog;
+    // }
     
   }
 
-  constructor(private getTables : GetTablesService, private postForm : PostFormTablesService, private filesMapper : GeneratedFilesMapperService){}
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes){
+      if(this.inputTables){
+        let result = new Array<ICheckTable>();
+        this.inputTables.forEach((table:any) => {
+          result.push({ name: table.name ,isChecked:false });
+        });
+        this.tables = result;
+        this.databaseName = this.inputTables[0].catalog;
+      }  
+    }
+  }
+
+  constructor (private getTables : GetTablesService, private postForm : PostFormTablesService, private filesMapper : GeneratedFilesMapperService){}
 
   logger(event:any){
     console.log(event.target.value)
@@ -95,6 +108,7 @@ export class TableListComponent implements OnInit{
     let formTables: FormTables = new FormTables(this.tables, sgbd, connString ,inputValue);
     //Programar o algoritmo para enviar uma lista com as tabelas marcadas
     this.postForm.postSelection(formTables).subscribe((success)=>{
+      this.filesMapper.clearFilesList();
       this.filesMapper.map(success);
     },
     error=>console.error(error));

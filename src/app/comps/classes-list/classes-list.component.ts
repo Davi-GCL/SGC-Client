@@ -1,4 +1,4 @@
-import { Component, Input, AfterViewInit } from '@angular/core';
+import { Component, Input, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup , FormControl } from '@angular/forms';
 import { GeneratedClass } from 'src/app/Models/GeneratedClass';
 import { GeneratedFilesMapperService } from 'src/app/services/generated-files.mapper.service';
@@ -8,14 +8,21 @@ import { GeneratedFilesMapperService } from 'src/app/services/generated-files.ma
   templateUrl: './classes-list.component.html',
   styleUrls: ['./classes-list.component.css']
 })
-export class ClassesListComponent implements AfterViewInit{
+export class ClassesListComponent implements AfterViewInit, OnChanges{
   // @Input() databaseName = 'banco de dados';
 
   classes: Array<GeneratedClass> = []
 
   constructor(private generatedFiles: GeneratedFilesMapperService){}
 
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("changes: ",changes);
+    if(changes){
+      this.classes = this.generatedFiles.filesList
+    }
+  }
+
   ngAfterViewInit(): void {
-    this.classes = this.generatedFiles.filesList;
+    // this.classes = this.generatedFiles.filesList;
   }
 }
