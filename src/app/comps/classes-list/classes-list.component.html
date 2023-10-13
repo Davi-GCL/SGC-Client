@@ -2,7 +2,7 @@
     <h5 class="pb-1">Arquivos de classes gerados:</h5>
     <div class="list-group border border-1 rounded-bottom-2">
         <!-- List header -->
-        <div class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center border-0 list-header" id="tables-list-head">
+        <div class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center border-0 list-header" id="classes-list-head">
             <div>
                 <label>Downloads</label>
             </div>
@@ -11,10 +11,10 @@
         <!-- /List header -->
     
         <ul class="p-0 list-body">
-            <li class="list-group-item tables-item" id={{tables.indexOf(table)}}
-        *ngFor="let table of tables" >
-            <a href={{table.download}} download="{{table.name}}" class="link-offset-1 download-link">{{table.name|titlecase}}</a>
-            <!-- a href={{linkURI}} download="Teste.txt" class="link-offset-1 download-link">{{table.name|titlecase}}.cs</a> -->
+            <li class="list-group-item tables-item" id={{classes.indexOf(class)}}
+        *ngFor="let class of classes" >
+            <a href={{class.download}} download="{{class.name}}" class="link-offset-1 download-link">{{class.name|titlecase}}</a>
+            <!-- a href={{linkURI}} download="Teste.txt" class="link-offset-1 download-link">{{class.name|titlecase}}.cs</a> -->
             </li>
         </ul>
     </div>

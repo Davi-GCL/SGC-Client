@@ -11,11 +11,11 @@ import { GeneratedFilesMapperService } from 'src/app/services/generated-files.ma
 export class ClassesListComponent implements AfterViewInit{
   // @Input() databaseName = 'banco de dados';
 
-  tables: Array<GeneratedClass> = []
+  classes: Array<GeneratedClass> = []
 
   constructor(private generatedFiles: GeneratedFilesMapperService){}
 
   ngAfterViewInit(): void {
-    this.tables = this.generatedFiles.filesList;
+    this.classes = this.generatedFiles.filesList;
   }
 }
