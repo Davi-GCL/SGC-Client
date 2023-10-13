@@ -10,12 +10,18 @@ import { GetTablesService } from 'src/app/services/get-tables.service';
 })
 export class MainPageComponent implements OnInit{
   tables!: Table[];
-  constructor(private getTables: GetTablesService, public generatedFiles: GeneratedFilesMapperService){}
+  constructor(private getTables: GetTablesService, public generatedFiles: GeneratedFilesMapperService)
+  {
+    
+  }
 
   ngOnInit(): void {  }
 
   EventRes(x:any){
-    this.tables = x;
+    // this.tables = x;
+    this.getTables.tables.subscribe((data)=>{
+      this.tables = data;
+    })
   }
 
   ScrollTo(destination:string){

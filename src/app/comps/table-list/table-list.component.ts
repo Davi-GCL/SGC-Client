@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms'
 import { FormTables } from 'src/app/Models/FormTables';
 import { GeneratedClass } from 'src/app/Models/GeneratedClass';
@@ -13,7 +13,7 @@ import { PostFormTablesService } from 'src/app/services/post-form-tables.service
   templateUrl: './table-list.component.html',
   styleUrls: ['./table-list.component.css']
 })
-export class TableListComponent implements OnInit{
+export class TableListComponent implements OnChanges{
   texto: string = "";
   all: boolean = false;
   databaseName = "";
@@ -24,7 +24,20 @@ export class TableListComponent implements OnInit{
 
   tables: Array<ICheckTable> = []
 
-  ngOnInit(){
+  // ngOnInit(){
+  //   if(this.inputTables){
+  //     let result = new Array<ICheckTable>();
+  //     this.inputTables.forEach((table:any) => {
+  //       result.push({ name: table.name ,isChecked:false });
+  //     });
+  //     this.tables = result;
+  //     this.databaseName = this.inputTables[0].catalog;
+  //   }
+    
+  // }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes)
     if(this.inputTables){
       let result = new Array<ICheckTable>();
       this.inputTables.forEach((table:any) => {
@@ -33,10 +46,17 @@ export class TableListComponent implements OnInit{
       this.tables = result;
       this.databaseName = this.inputTables[0].catalog;
     }
-    
   }
 
-  constructor(private getTables : GetTablesService, private postForm : PostFormTablesService, private filesMapper : GeneratedFilesMapperService){}
+  constructor(private getTables : GetTablesService, private postForm : PostFormTablesService, private filesMapper : GeneratedFilesMapperService){
+    // this.tables = new Array<ICheckTable>();
+    // this.getTables.tables.subscribe((data)=>{
+    //   data.forEach((d:any)=>{
+    //     this.tables.push({name: d.name, isChecked:false})
+    //   })
+    //   this.databaseName = data[0].catalog;
+    // })
+  }
 
   logger(event:any){
     console.log(event.target.value)
@@ -95,6 +115,7 @@ export class TableListComponent implements OnInit{
     let formTables: FormTables = new FormTables(this.tables, sgbd, connString ,inputValue);
     //Programar o algoritmo para enviar uma lista com as tabelas marcadas
     this.postForm.postSelection(formTables).subscribe((success)=>{
+      this.filesMapper.clearFilesList();
       this.filesMapper.map(success);
     },
     error=>console.error(error));

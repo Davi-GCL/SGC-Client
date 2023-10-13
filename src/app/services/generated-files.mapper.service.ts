@@ -9,6 +9,9 @@ export class GeneratedFilesMapperService {
 
   constructor() { }
 
+  clearFilesList(){
+    this.filesList = new Array<GeneratedClass>();
+  }
   map(objects:Array<Object>){
     for(let key in objects){
       this.filesList.push({name:key+".cs",download:`data:file/cs;base64,${objects[key]}`});
