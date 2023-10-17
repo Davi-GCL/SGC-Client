@@ -7,6 +7,7 @@ import { Table } from 'src/app/Models/Table';
 import { GeneratedFilesMapperService } from 'src/app/services/generated-files.mapper.service';
 import { GetTablesService } from 'src/app/services/get-tables.service';
 import { PostFormTablesService } from 'src/app/services/post-form-tables.service';
+import { UIHelpersService } from 'src/app/services/ui-helpers.service';
 
 @Component({
   selector: 'app-table-list',
@@ -49,7 +50,7 @@ export class TableListComponent implements OnInit, OnChanges{
     }
   }
 
-  constructor (private getTables : GetTablesService, private postForm : PostFormTablesService, private filesMapper : GeneratedFilesMapperService){}
+  constructor (private getTables : GetTablesService, private postForm : PostFormTablesService, private filesMapper : GeneratedFilesMapperService, public uiHelpers: UIHelpersService){}
 
   logger(event:any){
     console.log(event.target.value)
@@ -103,6 +104,7 @@ export class TableListComponent implements OnInit, OnChanges{
       return ;
     }
     this.preenchido = true;
+    this.uiHelpers.loading = true;
     //Pega a string de conexão armazenada no service
     const {sgbd , connString} = this.getTables;
     let formTables: FormTables = new FormTables(this.tables, sgbd, connString ,inputValue);
@@ -110,8 +112,13 @@ export class TableListComponent implements OnInit, OnChanges{
     this.postForm.postSelection(formTables).subscribe((success)=>{
       this.filesMapper.clearFilesList();
       this.filesMapper.map(success);
+      
+      this.uiHelpers.showSuccessMessage("Classes geradas com exito!")
     },
-    error=>console.error(error));
+    error=>{
+      this.uiHelpers.showErrorMessage("Falha ao gerar classes");
+      console.error(error);
+    });
     
   }
 

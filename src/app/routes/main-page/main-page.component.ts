@@ -2,6 +2,7 @@ import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Table } from 'src/app/Models/Table';
 import { GeneratedFilesMapperService } from 'src/app/services/generated-files.mapper.service';
 import { GetTablesService } from 'src/app/services/get-tables.service';
+import { UIHelpersService } from 'src/app/services/ui-helpers.service';
 
 @Component({
   selector: 'app-main-page',
@@ -10,7 +11,7 @@ import { GetTablesService } from 'src/app/services/get-tables.service';
 })
 export class MainPageComponent implements OnInit{
   tables!: Table[];
-  constructor(private getTables: GetTablesService, public generatedFiles: GeneratedFilesMapperService)
+  constructor(private getTables: GetTablesService, public generatedFiles: GeneratedFilesMapperService, public uiHelper: UIHelpersService)
   {
     
   }
