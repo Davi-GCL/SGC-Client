@@ -22,6 +22,7 @@ export class MainPageComponent implements OnInit{
     this.getTables.tables.subscribe((data)=>{
       this.tables = data;
     })
+    this.ScrollTo('tables-section')
   }
 
   ScrollTo(destination:string){
