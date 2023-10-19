@@ -33,7 +33,7 @@ export class GetTablesService {
 
     // this.clearData();
     aux.subscribe((success)=>{
-      this.tables= <Array<Table>> success;
+      this.tables = <Array<Table>> success;
     },
       error=>console.error(error)
     );

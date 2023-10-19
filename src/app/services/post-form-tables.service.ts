@@ -4,6 +4,7 @@ import { Table } from '../Models/Table';
 import { HttpClient } from '@angular/common/http';
 import { FormTables } from '../Models/FormTables';
 import { GeneratedClass } from '../Models/GeneratedClass';
+import { GeneratedFilesMapperService } from './generated-files.mapper.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class PostFormTablesService {
     this._classes = value;
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private filesMapper: GeneratedFilesMapperService) { }
 
   postSelection(form:FormTables): Observable<any> {
     

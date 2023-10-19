@@ -16,14 +16,22 @@ export class MainPageComponent implements OnInit{
     
   }
 
-  ngOnInit(): void {  }
+  ngOnInit(): void {
+    this.getTables.tables.subscribe((data)=>{
+      this.tables = data;
+      console.log("primeiro click:", data)
+      this.ScrollTo('tables-section')
+    })
+  }
 
   EventRes(x:any){
     // this.tables = x;
-    this.getTables.tables.subscribe((data)=>{
-      this.tables = data;
-    })
-    this.ScrollTo('tables-section')
+    // this.getTables.tables.subscribe((data)=>{
+    //   this.tables = data;
+    //   console.log("primeiro click:", data)
+    // })
+    
+    
   }
 
   ScrollTo(destination:string){
