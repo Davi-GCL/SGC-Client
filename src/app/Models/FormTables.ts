@@ -1,7 +1,7 @@
-import { ICheckTable } from "./ICheckTable"
+import { CheckTable } from "./CheckTable"
 
 export class FormTables {
-    constructor(tablesList:Array<ICheckTable> , sgbd:number , connString:string, namespace:string){
+    constructor(tablesList:Array<CheckTable> , sgbd:number , connString:string, namespace:string){
         this.selectedTablesNames = <string[]> tablesList.filter(x=>x.isChecked).map((x)=> x.name);
         this.sgbd = sgbd;
         this.connString = connString;

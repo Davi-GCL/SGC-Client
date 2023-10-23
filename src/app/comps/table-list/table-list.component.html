@@ -22,8 +22,13 @@
         <ul class="p-0 list-body">
             <li class="list-group-item tables-item" id={{tables.indexOf(table)}}
         *ngFor="let table of tables|filter:texto" >
-            <input class="form-check-input me-2" [checked]="table.isChecked" type="checkbox" id={{table.name}} (change)="changeCheckBox($event)">
-            <label class="form-check-label stretched-link" for="{{table.name}}">{{table.name}}</label>
+                <input class="form-check-input me-2" [checked]="table.isChecked" type="checkbox" id={{table.name}} (change)="changeCheckBox($event)">
+                <label class="form-check-label stretched-link" for="{{table.name}}">{{table.name}}</label>
+                <ol>
+                    <li *ngFor="let column of table.columns">
+                        {{column.name}}
+                    </li>
+                </ol>
             </li>
         </ul>
     </div>

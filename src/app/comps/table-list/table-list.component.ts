@@ -2,7 +2,7 @@ import { Component, Input, OnInit, OnChanges, SimpleChanges} from '@angular/core
 import {FormGroup, FormControl} from '@angular/forms'
 import { FormTables } from 'src/app/Models/FormTables';
 import { GeneratedClass } from 'src/app/Models/GeneratedClass';
-import { ICheckTable } from 'src/app/Models/ICheckTable';
+import { CheckTable } from 'src/app/Models/CheckTable';
 import { Table } from 'src/app/Models/Table';
 import { GeneratedFilesMapperService } from 'src/app/services/generated-files.mapper.service';
 import { GetTablesService } from 'src/app/services/get-tables.service';
@@ -23,11 +23,11 @@ export class TableListComponent implements OnInit, OnChanges{
 
   @Input({alias:'inputTable'}) inputTables!: Array<Table>;
 
-  tables: Array<ICheckTable> = []
+  tables: Array<CheckTable> = []
 
   ngOnInit(){
     // if(this.inputTables){
-    //   let result = new Array<ICheckTable>();
+    //   let result = new Array<CheckTable>();
     //   this.inputTables.forEach((table:any) => {
     //     result.push({ name: table.name ,isChecked:false });
     //   });
@@ -40,9 +40,9 @@ export class TableListComponent implements OnInit, OnChanges{
   ngOnChanges(changes: SimpleChanges): void {
     if(changes){
       if(this.inputTables){
-        let result = new Array<ICheckTable>();
+        let result = new Array<CheckTable>();
         this.inputTables.forEach((table:any) => {
-          result.push({ name: table.name ,isChecked:false });
+          result.push(new CheckTable(table.name ,false,table.columns));
         });
         this.tables = result;
         this.databaseName = this.inputTables[0].catalog;
