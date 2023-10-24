@@ -14,6 +14,7 @@ import { ComponentsPageComponent } from './routes/components-page/components-pag
 import { AppRoutingModule } from './app-routing.module';
 import { MainPageComponent } from './routes/main-page/main-page.component';
 import { FormConnectionComponent } from './comps/form-connection/form-connection.component';
+import { FilterConnstringPipe } from './filter-connstring.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FormConnectionComponent } from './comps/form-connection/form-connection
     ClassesListComponent,
     ComponentsPageComponent,
     MainPageComponent,
-    FormConnectionComponent
+    FormConnectionComponent,
+    FilterConnstringPipe
   ],
   imports: [
     BrowserModule,

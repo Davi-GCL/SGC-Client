@@ -24,11 +24,6 @@ export class GetTablesService {
   constructor(private http: HttpClient) { }
 
   fetchAll(form:FormConnection): Observable<any> {
-    //retorna um observable que não precisara de um unsubscribe ao encerrar
-    // let form2={
-    //   sgbd: 1,
-    //   connString: "Data Source=OPERACIONAL39\\SQLEXPRESS;Initial Catalog=sistema_banco;Persist Security Info=True;User ID=sa;Password=root"
-    // }
     let aux = this.http.post(this.apiUrl, form, {headers: {'Content-Type': 'application/json'},}).pipe(take(1));
 
     // this.clearData();

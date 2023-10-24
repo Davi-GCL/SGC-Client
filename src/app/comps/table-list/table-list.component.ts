@@ -65,7 +65,6 @@ export class TableListComponent implements OnInit, OnChanges{
       columList.style.display = 'block';
       event.target.className = "bi bi-chevron-up";
     }
-    
   }
 
   //Metodo para marcar todas checkbox presentes na lista
@@ -80,7 +79,6 @@ export class TableListComponent implements OnInit, OnChanges{
         table.isChecked = !this.all; 
       }   
     })
-
     // tablesItems.forEach((item)=>{
     //   let checkbox = item.getElementsByTagName('input')[0];
     //   checkbox.checked = !this.all;
@@ -93,7 +91,6 @@ export class TableListComponent implements OnInit, OnChanges{
     // this.tables.forEach((table)=>{
     //   table.isChecked= !table.isChecked
     // })
-
   }
 
   changeCheckBox(event:any){

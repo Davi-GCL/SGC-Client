@@ -31,4 +31,17 @@ export class ClassesListComponent implements AfterViewInit, OnChanges{
   downloadAll():void{
     this.linksList.forEach((e:HTMLAnchorElement)=>e.click())
   }
+
+  showDescription(event:any, descriptionEId:any):void{
+    let desc = document.getElementById(descriptionEId);
+    if(desc){
+      if(desc.style.display == "block"){
+        desc.style.display = "none";
+        event.target.className = "bi bi-chevron-down";
+      }else{
+        desc.style.display = "block";
+        event.target.className = "bi bi-chevron-up";
+      }
+    }
+  }
 }
