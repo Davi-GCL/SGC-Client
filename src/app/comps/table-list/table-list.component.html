@@ -5,7 +5,7 @@
         <!-- List header -->
         <div class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center border-0 list-header" id="tables-list-head">
             <div>
-                <input class="form-check-input me-2" type="checkbox" id="list-header-check" name="all" (click)="selectAll(texto)" [(ngModel)]="all">
+                <input class="form-check-input me-2" type="checkbox" id="list-header-check" name="all" (click)="selectAll(texto)" [(ngModel)]="all" title="Marcar todos">
                 <label class="form-check-label" for="list-header-check">Tabelas</label>
             </div>
             <span class="badge rounded-pill">{{(tables|filter:texto).length}}</span>
@@ -23,12 +23,14 @@
             <li class="list-group-item tables-item" id={{tables.indexOf(table)}}
         *ngFor="let table of tables|filter:texto" >
                 <input class="form-check-input me-2" [checked]="table.isChecked" type="checkbox" id={{table.name}} (change)="changeCheckBox($event)">
-                <label class="form-check-label stretched-link" for="{{table.name}}">{{table.name}}</label>
-                <ol>
+                <label class="form-check-label" for="{{table.name}}">{{table.name}}</label>
+                <span class="float-right" role="button" (click)="showColumns($event)"><i class="bi bi-chevron-down" title="Exibir Campos"></i></span>
+                
+                <ul class="column-list">
                     <li *ngFor="let column of table.columns">
-                        {{column.name}}
+                        <small>{{column.name}} : {{column.type}}</small>
                     </li>
-                </ol>
+                </ul>
             </li>
         </ul>
     </div>

@@ -56,6 +56,18 @@ export class TableListComponent implements OnInit, OnChanges{
     console.log(event.target.value)
   }
 
+  showColumns(event:any){
+    let columList = event.target.parentNode.parentNode.querySelector('.column-list');
+    if(columList.style.display == 'block'){
+      columList.style.display = 'none';
+      event.target.className = "bi bi-chevron-down";
+    }else{
+      columList.style.display = 'block';
+      event.target.className = "bi bi-chevron-up";
+    }
+    
+  }
+
   //Metodo para marcar todas checkbox presentes na lista
   selectAll(search:any){
     //Pega todos as linhas da lista Tabelas 
