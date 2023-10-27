@@ -24,20 +24,31 @@ export class GetTablesService {
   constructor(private http: HttpClient) { }
 
   fetchAll(form:FormConnection): Observable<any> {
-    let aux = this.http.post(this.apiUrl, form, {headers: {'Content-Type': 'application/json'},}).pipe(take(1));
+    let res = this.http.post(this.apiUrl, form, {headers: {'Content-Type': 'application/json'},}).pipe(take(1));
 
     // this.clearData();
-    aux.subscribe((success)=>{
+    res.subscribe((success)=>{
       this.tables = <Array<Table>> success;
     },
       error=>console.error(error)
     );
-    return aux;
+    return res;
   }
 
   //Limpa a variavel observable para não ficar acumulando informações atraves das requisições
   clearData(){
     this._tables.complete() ;
     this._tables = new Subject<Array<Table>>();
+  }
+
+  filterString(text:string){
+    text = text.trim()
+    text = text.replaceAll("\\\\",'\\');
+    let aux = text;
+    if(text.startsWith("\"") && text.endsWith("\""))
+    {
+      aux = text.substring(1,text.length-1);
+    }
+    return aux;
   }
 }

@@ -29,8 +29,9 @@ export class FormConnectionComponent {
     }
     //Armazenando os valores no "contexto" para ser usado depois
     this.getTables.sgbd = parseInt(this.connectionForm.value.sgbdRadio as string);
-    this.getTables.connString = this.connectionForm.value.connString;
-    
+    this.getTables.connString = this.getTables.filterString(this.connectionForm.value.connString);
+    alert(this.getTables.filterString(this.connectionForm.value.connString))
+
     let formConnection: FormConnection = new FormConnection(this.connectionForm.value.sgbdRadio, this.connectionForm.value.connString)
     
     this.uiHelpers.loading = true;
