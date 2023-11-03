@@ -19,7 +19,7 @@ export class TableListComponent implements OnInit, OnChanges{
   all: boolean = false;
   databaseName = "";
   resList = new Array<GeneratedClass>();
-  inputNamespace:FormControl = new FormControl('');
+  inputNamespace: FormControl = new FormControl('');
 
   @Input({alias:'inputTable'}) inputTables!: Array<Table>;
 

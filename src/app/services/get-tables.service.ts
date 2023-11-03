@@ -43,12 +43,12 @@ export class GetTablesService {
 
   filterString(text:string){
     text = text.trim()
-    text = text.replaceAll("\\\\",'\\');
-    let aux = text;
+    text = text.replaceAll("\\\\","\\");
+    let result = text;
     if(text.startsWith("\"") && text.endsWith("\""))
     {
-      aux = text.substring(1,text.length-1);
+      result = text.substring(1,text.length-1);
     }
-    return aux;
+    return result;
   }
 }
