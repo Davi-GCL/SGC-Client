@@ -32,7 +32,7 @@ export class FormConnectionComponent {
     this.getTables.connString = this.getTables.filterString(this.connectionForm.value.connString);
     alert(this.getTables.connString)
 
-    let formConnection: FormConnection = new FormConnection(this.connectionForm.value.sgbdRadio, this.connectionForm.value.connString)
+    let formConnection: FormConnection = new FormConnection(this.getTables.sgbd, this.getTables.connString)
     
     this.uiHelpers.loading = true;
     //Fazer aqui o algoritmo para enviar o objeto com os valores do formulario de conexao para a API

@@ -43,11 +43,11 @@ export class GetTablesService {
 
   filterString(text:string){
     text = text.trim()
-    text = text.replaceAll("\\\\","\\");
-    let result = text;
-    if(text.startsWith("\"") && text.endsWith("\""))
+    let result = text.replace('\\\\','\\');
+
+    if(result.startsWith("\"") && result.endsWith("\""))
     {
-      result = text.substring(1,text.length-1);
+      result = result.substring(1,result.length-1);
     }
     return result;
   }
