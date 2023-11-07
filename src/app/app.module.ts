@@ -14,6 +14,8 @@ import { ComponentsPageComponent } from './routes/components-page/components-pag
 import { AppRoutingModule } from './app-routing.module';
 import { MainPageComponent } from './routes/main-page/main-page.component';
 import { FormConnectionComponent } from './comps/form-connection/form-connection.component';
+import { ClassesListItemComponent } from './comps/classes-list-item/classes-list-item.component';
+import { AlertGroupComponent } from './comps/alert-group/alert-group.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { FormConnectionComponent } from './comps/form-connection/form-connection
     ComponentsPageComponent,
     MainPageComponent,
     FormConnectionComponent,
+    ClassesListItemComponent,
+    AlertGroupComponent,
   ],
   imports: [
     BrowserModule,

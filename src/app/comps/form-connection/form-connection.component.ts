@@ -30,7 +30,7 @@ export class FormConnectionComponent {
     //Armazenando os valores no "contexto" para ser usado depois
     this.getTables.sgbd = parseInt(this.connectionForm.value.sgbdRadio as string);
     this.getTables.connString = this.getTables.filterString(this.connectionForm.value.connString);
-    alert(this.getTables.connString)
+    alert(this.getTables.connString);
 
     let formConnection: FormConnection = new FormConnection(this.getTables.sgbd, this.getTables.connString)
     

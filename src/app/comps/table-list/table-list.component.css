@@ -23,5 +23,5 @@
     display: none;
     transition: all 1s;
     transition-delay: 0.3s;
-    list-style-type:disc
+    list-style-type:none;
 }

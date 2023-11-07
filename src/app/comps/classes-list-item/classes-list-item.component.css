@@ -1,0 +1,19 @@
+li{
+    border-inline: none;
+    /* border-bottom: none; */
+}
+
+.download-link{
+    text-decoration: none;
+}
+
+.btn-clipboard:hover{
+    .bi-clipboard::before{
+        content: "\f71d";
+    }
+}
+.btn-clipboard::selection{
+    .bi-clipboard::before{
+        content: "\f71b";
+    }
+}
