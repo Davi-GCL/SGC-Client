@@ -5,10 +5,10 @@
     padding: 0px;
     border-bottom-left-radius: 0.375rem;
 }
-.list-body>li{
+/* li{
     border-inline: none;
-    /* border-bottom: none; */
-}
+
+} */
 
 .input-search{
     font-size: 16px;
@@ -19,6 +19,3 @@
     box-shadow: none !important;
 }
 
-.download-link{
-    text-decoration: none;
-}

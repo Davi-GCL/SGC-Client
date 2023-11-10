@@ -9,10 +9,18 @@ export class GeneratedFilesMapperService {
 
   constructor() { }
 
-  map(objects:Array<Object>){
-    for(let key in objects){
-      this.filesList.push({name:key+".cs",download:`data:file/cs;base64,${objects[key]}`});
+  map(classes:Array<GeneratedClass>){
+    // for(let key in objects){
+    //   this.filesList.push({name:key+".cs",download:`data:file/cs;base64,${objects[key]}`});
+    // }
+    for(let i=0;i<classes.length;i++){
+      this.filesList.push({
+        name:classes[i].name+".cs",
+        download:`data:file/cs;base64,${classes[i].download}`, 
+        description: classes[i].description
+      });
     }
+    console.log(classes[0].description);
     return this.filesList;
   }
 

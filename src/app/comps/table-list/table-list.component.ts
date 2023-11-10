@@ -19,7 +19,7 @@ export class TableListComponent implements OnInit, OnChanges{
   all: boolean = false;
   databaseName = "";
   resList = new Array<GeneratedClass>();
-  inputNamespace:FormControl = new FormControl('');
+  inputNamespace: FormControl = new FormControl('');
 
   @Input({alias:'inputTable'}) inputTables!: Array<Table>;
 
@@ -56,6 +56,17 @@ export class TableListComponent implements OnInit, OnChanges{
     console.log(event.target.value)
   }
 
+  showColumns(event:any){
+    let columList = event.target.parentNode.parentNode.querySelector('.column-list');
+    if(columList.style.display == 'block'){
+      columList.style.display = 'none';
+      event.target.className = "bi bi-chevron-down";
+    }else{
+      columList.style.display = 'block';
+      event.target.className = "bi bi-chevron-up";
+    }
+  }
+
   //Metodo para marcar todas checkbox presentes na lista
   selectAll(search:any){
     //Pega todos as linhas da lista Tabelas 
@@ -68,7 +79,6 @@ export class TableListComponent implements OnInit, OnChanges{
         table.isChecked = !this.all; 
       }   
     })
-
     // tablesItems.forEach((item)=>{
     //   let checkbox = item.getElementsByTagName('input')[0];
     //   checkbox.checked = !this.all;
@@ -81,7 +91,6 @@ export class TableListComponent implements OnInit, OnChanges{
     // this.tables.forEach((table)=>{
     //   table.isChecked= !table.isChecked
     // })
-
   }
 
   changeCheckBox(event:any){

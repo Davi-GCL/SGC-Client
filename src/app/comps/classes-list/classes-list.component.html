@@ -1,5 +1,6 @@
 <form action="" class="mx-auto" style="max-width: 565px;">
-    <h5 class="pb-1">Arquivos de classes gerados:</h5>
+    <h5 class="pb-0 mb-1">Arquivos de classes gerados:</h5>
+    <small class="pb-2 text-body-secondary">Clique no nome para baixar o arquivo de classe, ou na seta para copiar a classe em texto</small>
     <div class="list-group border border-1 rounded-bottom-2">
         <!-- List header -->
         <div class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center border-0 list-header" id="classes-list-head">
@@ -11,11 +12,9 @@
         <!-- /List header -->
     
         <ul class="p-0 list-body">
-            <li class="list-group-item tables-item" id={{classes.indexOf(class)}}
-        *ngFor="let class of classes" >
-            <a href={{class.download}} download="{{class.name}}" class="link-offset-1 download-link">{{class.name|titlecase}}</a>
-            <!-- a href={{linkURI}} download="Teste.txt" class="link-offset-1 download-link">{{class.name|titlecase}}.cs</a> -->
-            </li>
+            <div *ngFor="let class of classes">
+                <app-classes-list-item [class]="class" [id]="classes.indexOf(class)"></app-classes-list-item>
+            </div>
         </ul>
     </div>
     <div class="btn-area d-flex justify-content-end mt-2 w-100">

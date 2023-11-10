@@ -1,0 +1,11 @@
+<!-- <ng-template *ngIf="class"> -->
+    <li class="list-group-item tables-item" id={{id}}>
+        <a href={{class.download}} download="{{class.name}}" class="link-offset-1 download-link">{{class.name|titlecase}}</a>     
+        <span class="btn-description float-right" role="button"><i class="bi bi-chevron-down" title="Visualizar classe" (click)="showDescription($event, class.name+'-desc')"></i></span>
+    
+        <div class="item-description" id="{{class.name+'-desc'}}">  
+            <span class="btn-clipboard float-right" role="button" ><i class="bi bi-clipboard" title="Copiar classe" (click)="copyDescription($event, class.description)"></i></span>
+            <pre>{{class.description}}</pre>
+        </div>
+    </li>
+<!-- </ng-template> -->

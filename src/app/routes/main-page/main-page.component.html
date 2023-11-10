@@ -16,9 +16,4 @@
     </section>
 </div>
 
-<div class="fixed-top alerts-area d-flex align-items-center flex-column" *ngIf="uiHelper.alertList">
-    <div class="alert alert-{{alert.type}} alert-dismissible fade show w-50" role="alert" *ngFor="let alert of uiHelper.alertList">
-        <strong>{{alert.message}}</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-</div>
+<app-alert-group></app-alert-group>

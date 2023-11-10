@@ -18,3 +18,10 @@
     outline: 0;
     box-shadow: none !important;
 }
+
+.column-list{
+    display: none;
+    transition: all 1s;
+    transition-delay: 0.3s;
+    list-style-type:none;
+}

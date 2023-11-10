@@ -31,4 +31,5 @@ export class ClassesListComponent implements AfterViewInit, OnChanges{
   downloadAll():void{
     this.linksList.forEach((e:HTMLAnchorElement)=>e.click())
   }
+
 }

@@ -24,25 +24,31 @@ export class GetTablesService {
   constructor(private http: HttpClient) { }
 
   fetchAll(form:FormConnection): Observable<any> {
-    //retorna um observable que não precisara de um unsubscribe ao encerrar
-    // let form2={
-    //   sgbd: 1,
-    //   connString: "Data Source=OPERACIONAL39\\SQLEXPRESS;Initial Catalog=sistema_banco;Persist Security Info=True;User ID=sa;Password=root"
-    // }
-    let aux = this.http.post(this.apiUrl, form, {headers: {'Content-Type': 'application/json'},}).pipe(take(1));
+    let res = this.http.post(this.apiUrl, form, {headers: {'Content-Type': 'application/json'},}).pipe(take(1));
 
     // this.clearData();
-    aux.subscribe((success)=>{
+    res.subscribe((success)=>{
       this.tables = <Array<Table>> success;
     },
       error=>console.error(error)
     );
-    return aux;
+    return res;
   }
 
   //Limpa a variavel observable para não ficar acumulando informações atraves das requisições
   clearData(){
     this._tables.complete() ;
     this._tables = new Subject<Array<Table>>();
+  }
+
+  filterString(text:string){
+    text = text.trim()
+    let result = text.replace('\\\\','\\');
+
+    if(result.startsWith("\"") && result.endsWith("\""))
+    {
+      result = result.substring(1,result.length-1);
+    }
+    return result;
   }
 }
