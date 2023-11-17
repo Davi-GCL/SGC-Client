@@ -4,11 +4,15 @@ import { Observable, take, of, Subject} from 'rxjs';
 import { FormConnection } from '../Models/FormConnection';
 import { Table } from '../Models/Table';
 
+import { environment } from 'src/environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class GetTablesService {
-  apiUrl = "https://localhost:7029/Connection/Connect"; 
+  //`${environment.api}Connection/Connect`
+  //"https://localhost:7029/Connection/Connect"
+  apiUrl = `${environment.api}Connection/Connect`; 
   sgbd:any;
   connString:any;
   private _tables:any = new Subject<Array<Table>>();

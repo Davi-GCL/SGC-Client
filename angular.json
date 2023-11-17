@@ -56,10 +56,30 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
+            },
+            "hom": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.hom.ts"
+                }
+              ]
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "hom"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -69,6 +89,9 @@
             },
             "development": {
               "browserTarget": "SGC-Client:build:development"
+            },
+            "hom": {
+              "browserTarget": "SGC-Client:build:hom"
             }
           },
           "defaultConfiguration": "development"

@@ -6,12 +6,14 @@ import { FormTables } from '../Models/FormTables';
 import { GeneratedClass } from '../Models/GeneratedClass';
 import { GeneratedFilesMapperService } from './generated-files.mapper.service';
 
+import { environment } from 'src/environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class PostFormTablesService {
 
-  apiUrl = "https://localhost:7029/Connection/Class"; 
+  apiUrl = `${environment.api}Connection/Class`; 
   sgbd:any;
   connString:any;
   _classes: any = new Subject<Array<Table>>();
